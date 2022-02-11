@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  database:
+    container_name: delivery_database
+    image: postgres
+    environment:
+      POSTGRES_DB: delivery
+      POSTGRES_USER: "development"
+      POSTGRES_PASSWORD: "dev12345"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ~/PostgreSQL:/var/lib/postgresql/data
+    
