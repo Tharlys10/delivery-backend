@@ -1,8 +1,13 @@
 import 'dotenv/config'
 import express from 'express';
+import { routes } from './routes/routes';
 
 const app = express();
 
-const { APP_PORT } = process.env;
+app.use(express.json());
 
-app.listen(Number(APP_PORT), () => console.log(`server is running, port ${APP_PORT}`));
+const { APP_PORT, APP_GLOBAL_PREFIX } = process.env;
+
+app.use(`${APP_GLOBAL_PREFIX}`, routes)
+
+app.listen(Number(APP_PORT), () => console.log(`server is running, port ${APP_PORT}`))
